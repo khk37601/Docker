@@ -24,12 +24,35 @@ LXC : https://ko.wikipedia.org/wiki/LXC(위키백과)
 이런 방법은 간단하지만 무겁고, 느리며 환경설정을 그때그때 해줘야 한다는 단점이 존재 합니다.
 이러한 단점을 개선하기 위해서 Docker를 이용하여 프로스세스 단위의 가상화가 등장했습니다. 
 
- #### 용어
+#### 용어
  
  * Image : 개발 환경을 구축하기위해 필요한 라이브러리 및 패키지르르 모아 하나의 파일로 만들어 놓은 것.
 
  * Container : Image가 실행돤 상태, 격리돤 프로세스.
  
+#### :arrow_down: 설치
+ 
+*  윈도우(Win10) 
+ ```
+ $ https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows
+ $ Download from Docker Hub > Get Docker click
+ $ cmd > docker version 
+ ```
+ 
+ * centos6 (참조 : https://jang8584.tistory.com/262)
+ ```
+ $ yum -y update
+ $ curl -O -sSL https://get.docker.com/rpm/1.7.1/centos-6/RPMS/x86_64/docker-engine-1.7.1-1.el6.x86_64.rpm
+ $ rpm -Uvh docker-engine-1.7.1-1.el6.x86_64.rpm --nodeps
+ $ yum -y install libcgroup
+ $ docker -v
+ ```
+ 
+ * centos7 
+ ```
+ $ yum -y update
+ $ yum -y install docker docker-registry
+ ```
  
  
 
