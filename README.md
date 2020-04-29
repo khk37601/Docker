@@ -4,6 +4,8 @@
 
 * :paperclip: 저장소 : github.com/docker/docker-ce
 
+* Linux Base (오직 리눅에서만 구동)
+
 *  리눅스 컨테이너(LXC (Linux containers)) 기술을 이용함.
 ```
 운영체제 수준의 가상화 기술로 리눅스 커널을 공유하면서 프로세스를 격리된 환경에서 실행하는 기술.
@@ -18,18 +20,31 @@ LXC : https://ko.wikipedia.org/wiki/LXC(위키백과)
 ##### 2. ```높은 이식성``` : 모든 컨테이너는 독자적인 실행 환경을 가지고 있다.  
 
 
+#### 용어
+ 
+ * Image : 개발 환경을 구축하기위해 필요한 라이브러리 및 패키지르르 모아 하나의 파일로 만들어 놓은 것.
+
+ * Container : Image가 실행돤 상태, 격리돤 프로세스.
+
+
 #### 등장배경
 
 기존의 가상화 방법은 VMware, VirtualBox를 이용하여 Host OS위에 여러종류의 OS를 가상화 하는 방식이였습니다.
 이런 방법은 간단하지만 무겁고, 느리며 환경설정을 그때그때 해줘야 한다는 단점이 존재 합니다.
 이러한 단점을 개선하기 위해서 Docker를 이용하여 프로스세스 단위의 가상화가 등장했습니다. 
 
-#### 용어
- 
- * Image : 개발 환경을 구축하기위해 필요한 라이브러리 및 패키지르르 모아 하나의 파일로 만들어 놓은 것.
+![대체텍스트](https://github.com/khk37601/docker/blob/master/docker_image/docker_%EA%B8%B0%EC%A1%B4%EB%B0%A9%EB%B2%95.PNG) 
+```
+ Hypervisor위에 새로운 os를 설치하는 방법이라서 많은 오버헤드가 발생 하게 됩니다.
+ (os, 커널을 통째로 가상화)
+ 새로운 os를 설치 할때마 설정을 처음부터 해야 한다는 단점이 존재합니다.
+```
+![대체텍스트](https://github.com/khk37601/docker/blob/master/docker_image/docker_%EC%83%88%EB%A1%9C%EC%9A%B4%20%EB%B0%A9%EB%B2%95.PNG) 
+```
+docker는 컨테이너 환경에서 실행됨, 하나의 컨테이너는 독립된 프로세스라고 생각하면 됩니다.(filesystem만 가상화 PC의 커널을 공유)
+컨테이너의 설정은 Image라는 것으로 저장이 가능 하며, Image를 이용하여 동일한 환경의 컨테이너 구동이 가능해 집니다.
+```
 
- * Container : Image가 실행돤 상태, 격리돤 프로세스.
- 
 #### :arrow_down: 설치
  
 *  윈도우(Win10) 
