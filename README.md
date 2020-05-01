@@ -22,10 +22,11 @@ LXC : https://ko.wikipedia.org/wiki/LXC(위키백과)
 
 #### 용어
  
- * Image : 개발 환경을 구축하기위해 필요한 라이브러리 및 패키지르르 모아 하나의 파일로 만들어 놓은 것.
+ * Image : 개발 환경을 구축하기위해 필요한 라이브러리 및 패키지를 모아 하나의 파일로 만들어 놓은 것.
+ (실행파일)
 
  * Container : Image가 실행돤 상태, 격리돤 프로세스.
-
+(프로세스)
 
 #### 등장배경
 
@@ -69,5 +70,49 @@ docker는 컨테이너 환경에서 실행됨, 하나의 컨테이너는 독립�
  $ yum -y install docker docker-registry
  ```
  
+ #### 명령어
+ 진행한 환경은 Window10입니다.
+ 
+ * 이미지목록 확인 
+ ```
+  $ docker images 
+ ```
+ ![](https://github.com/khk37601/Docker/blob/master/docker_image/docker_images.PNG)
+  각 이지미에는 고유한 ID가 부여됩니다.
+ 
+ 
+ * 이미지 찾기 
+ ```
+ $ docker search <name> 
+ ex) docker search mysql or centos or nginx ...
+ 
+ ```
+ ![](https://github.com/khk37601/Docker/blob/master/docker_image/docker_search.PNG)
+ DockerHub: https://hub.docker.com/ 에서도 image를 찾아서 다운받을 수 있습니다.
+ 
+ * 이미지 다운로드
+ ```
+ $ docker pull nginx
+ ```
+ ![](https://github.com/khk37601/Docker/blob/master/docker_image/docker_nginx_pull.PNG)
+ 
+ * nginx 실행
+ 
+ ```
+ # 현재 실행 중인 프로세스 목록
+ $ docker ps 
+ $ docker run -d  -p 8383:81 nginx
+ ```
+ ![](https://github.com/khk37601/Docker/blob/master/docker_image/docker_imges_run.PNG)
+ image를 실행한 상태인 컨테이너 입니다. 현재상태와 포트번호 등 정보를 살펴 볼 수 있습니다.
+ 
+ ![](https://github.com/khk37601/Docker/blob/master/docker_image/nginx_%EC%8B%A4%ED%96%89.PNG)
  
 
+ 
+ * nginx 여러개의 컨테이너
+ 
+ ![](https://github.com/khk37601/Docker/blob/master/docker_image/docker_%EC%97%AC%EB%9F%AC_%EC%BB%A8%EB%8D%B0%EC%9D%B4%EB%84%88.PNG)
+ 각의 nginx는 프로세스로 독립된 공간에서 실행중입니다.
+ 
+ 
