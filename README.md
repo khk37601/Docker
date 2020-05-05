@@ -1,8 +1,14 @@
 # :whale: Docker?
 
-* :pray: 발표 : 2013년 3월 13일( 솔로몬 하익스(Solomon Hykes) ) 
 
+<img src="https://github.com/khk37601/Docker/blob/master/docker_image/docker_logo.PNG" height="100">
+
+* :pray: 발표 : 2013년 3월 13일( 솔로몬 하익스(Solomon Hykes) ) 
+    
+    - [The future of Linux Containers](https://www.youtube.com/watch?v=wW9CAH9nSLs) 
 * :paperclip: 저장소 : github.com/docker/docker-ce
+
+* GO언어로 구성 
 
 * Linux Base (오직 리눅에서만 구동)
 
@@ -12,12 +18,30 @@
 
 * 운영체제 수준의 가상화 : 운영체제의 커널이 하나의 사용자 공간 인스턴스가 아닌, 여러 개의 격리된 사용자 공간 인스턴스를 갖출 수 있도록 하는 서버 가상화 방식.  
 ```
-LXC : https://ko.wikipedia.org/wiki/LXC(위키백과)
+[LXC](https://ko.wikipedia.org/wiki/LXC(위키백과)) 
+ 
+ ```namespace```기능을 이용하여 각 컨테이너릐 독립적인 공간을 제공 합니다.
+ 
+ * PID namespace :  프로세스에 할당된 고유한 ID를 통해 프로세스를 격리할 수 있습니다.
+ 
+ * Network namespace : ip주소, port번호 등 namespace마다 프로세스를 격리할 수 있습니다.
+ 
+ 리눅스 namespace기능 : https://galid1.tistory.com/442
+
+ ```cgroups(Control groups)```프로세스들이 사용할 수 있는 컴퓨팅 자원들을 제한하고 격리시킬 수 있는 기능.
+   
+   * 메모리, CPU, 네트워크 ..등 그룹단위로 제어 가능
+
+
+##### docker는 두개의 기술을 기반으로 container에 자원할당과 독립적인 프로세스 공간을 제공 해줍니다.
+
+
 
 #### LXC 특징 
 
 ##### 1. ```빠른 속도``` : 하나의 프로세스로 관리 하기때문에 속도가 매유 빠름.
 ##### 2. ```높은 이식성``` : 모든 컨테이너는 독자적인 실행 환경을 가지고 있다.  
+
 
 
 #### 용어
@@ -100,7 +124,8 @@ docker는 컨테이너 환경에서 실행됨, 하나의 컨테이너는 독립�
  
  ```
  # 현재 실행 중인 프로세스 목록
- $ docker ps 
+ $ docker ps
+ # 백그라운드에서 ngnix 실행
  $ docker run -d  -p 8383:81 nginx
  ```
  ![](https://github.com/khk37601/Docker/blob/master/docker_image/docker_imges_run.PNG)
@@ -114,5 +139,10 @@ docker는 컨테이너 환경에서 실행됨, 하나의 컨테이너는 독립�
  
  ![](https://github.com/khk37601/Docker/blob/master/docker_image/docker_%EC%97%AC%EB%9F%AC_%EC%BB%A8%EB%8D%B0%EC%9D%B4%EB%84%88.PNG)
  각의 nginx는 프로세스로 독립된 공간에서 실행중입니다.
+ 
+ * 실행중인 컨테이너 접근
+ ```
+ $ docker attach <container-name>quirky_napier
+ ```
  
  
